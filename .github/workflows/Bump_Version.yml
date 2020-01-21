@@ -18,7 +18,7 @@ jobs:
         WITH_V: false
         RELEASE_BRANCHES: master 
     - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 

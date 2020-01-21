@@ -16,9 +16,9 @@ dependencies {
 
 publishing {
     publications {
-        create<MavenPublication>("default") {
-            from(components["java"])
-            // Include any other artifacts here, like javadocs
+        myPublication(MavenPublication){
+            from components.java
+            artifact sourceJar
         }
     }
     repositories {

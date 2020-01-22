@@ -17,7 +17,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
       id: tagBump
-    - name: tagInfo
-      run: echo "tag ==== ${{steps.tagBump.outputs.tag}}  newtag ==== ${{steps.tagBump.outputs.new_tag}}"   
+    - name: Publish to GH
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+          NEW_VERSION= ${{steps.tagBump.outputs.tag}}
+          echo "New version: ${NEW_VERSION}"
+          echo "Github username: ${GITHUB_ACTOR}"
+          ./gradlew -Pversion=${NEW_VERSION} publish
 
 

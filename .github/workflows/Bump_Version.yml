@@ -18,6 +18,6 @@ jobs:
         WITH_V: true
       id: tagBump
     - name: tagInfo
-      run: echo "tag ==== ${{steps.tagBump.outputs.tag}}  newtag ==== ${{steps.tagBump.outputs.newTag}}"   
+      run: echo "tag ==== ${{steps.tagBump.outputs.tag}}  newtag ==== ${{steps.tagBump.outputs.new_tag}}"   
 
 

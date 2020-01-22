@@ -27,4 +27,7 @@ jobs:
         release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
+    - name: dump step
+      run: |
+          echo ${{toJson(steps)}}
 

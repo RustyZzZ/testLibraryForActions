@@ -16,5 +16,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
+      id: tagBump
+    - name: tagInfo
+      run: echo "tag ==== ${{steps.tagBump.tag}}  newtag ==== ${{steps.tagBump.newTag}}"   
 
 

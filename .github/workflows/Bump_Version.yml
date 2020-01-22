@@ -11,14 +11,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Dump steps context
+      env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"  
     - name: Github Tag Bump
       uses: anothrNick/github-tag-action@1.11.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
         RELEASE_BRANCHES: master*  
-    - name: Dump steps context
-      env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-      run: echo "$STEPS_CONTEXT"
+
 

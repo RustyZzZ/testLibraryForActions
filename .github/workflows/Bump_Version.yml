@@ -17,7 +17,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
         RELEASE_BRANCHES: master*  
-    - name: dump step
-      run: |
-          echo ${{toJson(steps)}}
+    - name: Dump steps context
+      env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
 

@@ -19,9 +19,7 @@ jobs:
       id: tagBump
       
     - name: Update version in build.gradle
-      run: |
-         NEW_VERSION=$(echo ${{steps.tagBump.outputs.tag}})
-         ./gradlew build && ./gradlew -PcustomV=${NEW_VERSION}
+      run: ./gradlew build updateVersion -PcustomV=${{steps.tagBump.outputs.tag}}
           
     - name: Git Commit and Push
       uses: github-actions-x/commit@v2.4 

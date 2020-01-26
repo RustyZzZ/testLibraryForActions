@@ -28,11 +28,9 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         push-branch: 'master'
-        commit-message: 'publish'
+        commit-message: ${{steps.tagBump.outputs.tag}}
         force-add: 'true'
         files: build.gradle
-        name: ${GITHUB_ACTOR}
-        email: ${GITHUB_ACTOR}@github.com
         
     - name: Publish to GH
       env:

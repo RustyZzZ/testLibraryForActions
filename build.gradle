@@ -35,6 +35,7 @@ publishing {
 
 task updateVersion {
     String newVersion = project.hasProperty("customV") ? customV : "$version"
+    println newVersion
     String result = buildFile.getText().replaceFirst("version='$version'", "version='$newVersion'")
     buildFile.setText result
 }

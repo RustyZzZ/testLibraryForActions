@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Github Tag Bump
       uses: anothrNick/github-tag-action@1.11.0
       env:
@@ -36,9 +36,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-          NEW_VERSION=$(echo ${{steps.tagBump.outputs.tag}})
-          echo "New version: ${NEW_VERSION}"
-          echo "Github username: ${GITHUB_ACTOR}"
-          ./gradlew -Pversion=${NEW_VERSION} publish
+          echo "New version: ${{steps.tagBump.outputs.tag}}"
+          ./gradlew -Pversion=${{steps.tagBump.outputs.tag}} publish
 
 

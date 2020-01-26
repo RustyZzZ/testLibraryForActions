@@ -3,7 +3,8 @@ plugins {
     id 'maven-publish'
 }
 
-
+group='org.example'
+version='2.2.2'
 sourceCompatibility = 1.8
 
 repositories {
@@ -16,7 +17,7 @@ dependencies {
 
 publishing {
     publications {
-        myPublication(MavenPublication){
+        myPublication(MavenPublication) {
             from components.java
         }
     }
@@ -31,3 +32,9 @@ publishing {
         }
     }
 }
+
+task updateVersion{
+    String result = buildFile.getText().replaceFirst("version='$version'","version='$customV'")
+    buildFile.setText result
+}
+
